@@ -6,7 +6,7 @@ import {
   LinkStyled,
   HeaderOneStyled,
   LinkContainer,
-} from "./Navigation.styles.js";
+} from "./Navigation.styles";
 
 export default function Navigation() {
   return (
