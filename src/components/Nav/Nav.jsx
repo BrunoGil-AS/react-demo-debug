@@ -2,22 +2,22 @@
 import { Link } from "react-router-dom";
 import {
   NavigationContainer,
-  Nav,
+  NavStyled,
   LinkStyled,
   HeaderOneStyled,
   LinkContainer,
-} from "./Navigation.styles";
+} from "./Nav.styles";
 
-export default function Navigation() {
+export default function Nav() {
   return (
     <NavigationContainer>
       <HeaderOneStyled>Demo</HeaderOneStyled>
-      <Nav>
+      <NavStyled>
         <LinkContainer>
           <LinkStyled to="/home">Dashboard</LinkStyled>
           <LinkStyled to="/box">Box</LinkStyled>
         </LinkContainer>
-      </Nav>
+      </NavStyled>
     </NavigationContainer>
   );
 }

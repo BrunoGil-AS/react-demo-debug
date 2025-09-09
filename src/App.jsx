@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Box from "./components/Box/Box.jsx";
-import Navigation from "./components/Navigation";
+import Nav from "./components/Nav";
 import Home from "./components/home/Home.jsx";
 import "./App.css";
 
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      <Navigation />
+      <Nav />
 
       <main>
         <Routes>

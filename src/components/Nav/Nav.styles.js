@@ -15,7 +15,7 @@ export const NavigationContainer = styled.div`
   background-color: #334b60;
 `;
 
-export const Nav = styled.nav`
+export const NavStyled = styled.nav`
   display: flex;
   gap: 12rem;
   margin-bottom: 1rem;
