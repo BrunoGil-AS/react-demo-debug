@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Box from "./components/Box/Box.jsx";
-import { Navigation } from "./components/navigation/Navigation.jsx";
+import Navigation from "./components/navigation";
 import Home from "./components/home/Home.jsx";
 import "./App.css";
 

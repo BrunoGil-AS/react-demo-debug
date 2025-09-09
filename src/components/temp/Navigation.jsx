@@ -6,9 +6,9 @@ import {
   LinkStyled,
   HeaderOneStyled,
   LinkContainer,
-} from "./StyledNav.jsx";
+} from "./Navigation.styles.js";
 
-export function Navigation() {
+export default function Navigation() {
   return (
     <NavigationContainer>
       <HeaderOneStyled>Demo</HeaderOneStyled>
