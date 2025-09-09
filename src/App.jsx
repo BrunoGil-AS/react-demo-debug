@@ -8,10 +8,10 @@ import {
 
 import Box from "./components/Box/Box.jsx";
 import { Navigation } from "./components/navigation/Navigation.jsx";
+import Home from "./components/home/Home.jsx";
 import "./App.css";
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
   const [count, setCount] = useState(0);
 
   return (
@@ -33,19 +33,6 @@ function App() {
         </Routes>
       </main>
     </Router>
-  );
-}
-
-function Home({ counter, setCounter }) {
-  return (
-    <>
-      <div className="card">
-        <button onClick={() => setCounter((count) => count + 1)}>
-          count is {counter}
-        </button>
-        <p>This demo has the propuse to show how to debug in react</p>
-      </div>
-    </>
   );
 }
 
