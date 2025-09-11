@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,30 +8,29 @@ import {
 import Box from "./components/Box";
 import Nav from "./components/Nav";
 import Dashboard from "./components/Dashboard";
+import { CountProvider } from "./context/Counter/CountProvider";
 import "./App.css";
 
+/**
+ * The main App component
+ * @returns {JSX.Element} The main App component
+ */
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <Router>
-      <Nav />
+    <CountProvider>
+      <Router>
+        <Nav />
 
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<Dashboard counter={count} setCounter={setCount} />}
-          />
-          <Route
-            path="/box"
-            element={<Box counter={count} setCounter={setCount} />}
-          />
-          {/* Ejemplo de redirect */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </main>
-    </Router>
+        <main>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/box" element={<Box />} />
+            {/* Ejemplo de redirect */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
+      </Router>
+    </CountProvider>
   );
 }
 

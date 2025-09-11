@@ -1,13 +1,15 @@
 import "../../App.css";
+import { useCount } from "../../context/Counter/useCount";
 
-export default function Dashboard({ counter, setCounter }) {
+export default function Dashboard() {
+  const { count, setCount } = useCount();
+
   return (
     <>
       <div className="card">
-        <button onClick={() => setCounter((count) => count + 1)}>
-          count is {counter}
-        </button>
-        <p>This demo has the propuse to show how to debug in react</p>
+        {console.log("The value of count is: ", count)}
+        <button onClick={() => setCount((c) => c + 1)}>count is {count}</button>
+        <p>This demo has the purpose to show how to debug in react</p>
       </div>
     </>
   );
