@@ -10,12 +10,16 @@ import Nav from "./components/Nav";
 import Dashboard from "./components/Dashboard";
 import { CountProvider } from "./context/Counter/CountProvider";
 import "./App.css";
+import { useEffect } from "react";
 
 /**
  * The main App component
  * @returns {JSX.Element} The main App component
  */
 function App() {
+  useEffect(() => {
+    console.log("Effect runs after every render of App component");
+  });
   return (
     <CountProvider>
       <Router>
