@@ -14,7 +14,7 @@ export default function Nav() {
       <HeaderOneStyled>Demo</HeaderOneStyled>
       <NavStyled>
         <LinkContainer>
-          <LinkStyled to="/home">Dashboard</LinkStyled>
+          <LinkStyled to="/">Dashboard</LinkStyled>
           <LinkStyled to="/box">Box</LinkStyled>
         </LinkContainer>
       </NavStyled>

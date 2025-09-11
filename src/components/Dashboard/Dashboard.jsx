@@ -1,6 +1,6 @@
 import "../../App.css";
 
-export default function Home({ counter, setCounter }) {
+export default function Dashboard({ counter, setCounter }) {
   return (
     <>
       <div className="card">

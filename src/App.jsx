@@ -6,9 +6,9 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Box from "./components/Box/Box.jsx";
+import Box from "./components/Box";
 import Nav from "./components/Nav";
-import Home from "./components/home/Home.jsx";
+import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 function App() {
@@ -21,15 +21,15 @@ function App() {
       <main>
         <Routes>
           <Route
-            path="/home"
-            element={<Home counter={count} setCounter={setCount} />}
+            path="/"
+            element={<Dashboard counter={count} setCounter={setCount} />}
           />
           <Route
             path="/box"
             element={<Box counter={count} setCounter={setCount} />}
           />
           {/* Ejemplo de redirect */}
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </Router>
