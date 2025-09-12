@@ -46,14 +46,22 @@ export default function Notes() {
     const noteToEdit = notes.find((note) => note.id === id);
     if (noteToEdit) {
       setIsNoteEditing(noteToEdit);
+      setNewNoteTitle(noteToEdit.title);
+      setNewNoteContent(noteToEdit.content);
     }
   };
 
   const handleUpdateNote = () => {
     if (isNoteEditing) {
+      console.log("text", newNoteTitle, newNoteContent);
+
       const updatedNotes = notes.map((note) =>
         note.id === isNoteEditing.id
-          ? { ...note, title: newNoteTitle, content: newNoteContent }
+          ? {
+              ...note,
+              title: newNoteTitle || note.title,
+              content: newNoteContent || note.content,
+            }
           : note
       );
       setNotes(updatedNotes);
@@ -77,11 +85,16 @@ export default function Notes() {
     setNewNoteTitle("");
     setNewNoteContent("");
   };
+  const handleCancelEdit = (e) => {
+    if (e.target === e.currentTarget) {
+      cancelEdit();
+    }
+  };
 
   return (
     <>
       <h1>Notes Page</h1>
-      <NotesContainer onDoubleClick={cancelEdit}>
+      <NotesContainer onDoubleClick={handleCancelEdit}>
         <NotesHeader>Your Notes</NotesHeader>
         <AddNoteButton onClick={handleAddNote}>Add Note</AddNoteButton>
 
@@ -113,12 +126,10 @@ export default function Notes() {
                     <NoteTitleInput
                       value={newNoteTitle}
                       onChange={(e) => setNewNoteTitle(e.target.value)}
-                      placeholder={note?.title}
                     />
                     <NoteInput
                       value={newNoteContent}
                       onChange={(e) => setNewNoteContent(e.target.value)}
-                      placeholder={note?.content}
                     />
                     <AddNoteButton onClick={handleUpdateNote}>
                       Update Note
