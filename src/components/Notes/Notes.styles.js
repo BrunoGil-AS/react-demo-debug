@@ -52,28 +52,42 @@ export const NoteContent = styled.p`
 `;
 
 export const AddNoteButton = styled.button`
-  background-color: ${colors.buttonBackground};
-  color: ${colors.buttonText};
+  // Button styles if disabled
+  background-color: ${(props) =>
+    props.disabled ? colors.disabledBackground : colors.buttonBackground};
+  color: ${(props) =>
+    props.disabled ? colors.disabledText : colors.buttonText};
+
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  cursor: pointer;
+  // Button  cursor and hover effects if disabled
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.2s;
+
   &:hover {
-    background-color: ${colors.buttonHover};
+    background-color: ${(props) =>
+      props.disabled ? colors.disabledBackground : colors.buttonHover};
   }
 `;
 
 export const EditNoteButton = styled.button`
-  background-color: ${colors.editButtonBackground};
-  color: ${colors.buttonText};
+  // Button styles if disabled
+  background-color: ${(props) =>
+    props.disabled ? colors.disabledBackground : colors.editButtonBackground};
+  color: ${(props) =>
+    props.disabled ? colors.disabledText : colors.buttonText};
+
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  cursor: pointer;
+  // Button  cursor and hover effects if disabled
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.2s;
+
   &:hover {
-    background-color: ${colors.editButtonHover};
+    background-color: ${(props) =>
+      props.disabled ? colors.disabledBackground : colors.editButtonHover};
   }
 `;
 

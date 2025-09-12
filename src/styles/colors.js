@@ -9,6 +9,9 @@ export const colors = {
   primaryText: "#333333",
   secondaryText: "#242424ff",
   buttonText: "#ffffff",
+  disabledText: "#aaaaaa",
+  editButtonBackground: "#287fa7ff",
+  disabledBackground: "#333333",
 
   // Colores de borde
   border: "#dee2e6",

@@ -14,6 +14,7 @@ import {
   NoteTitleContainer,
   ButtonContainer,
 } from "./Notes.styles";
+import { Note } from "./Note";
 
 import { useNotesContext } from "../../context/Notes/useNotesContext";
 import { useEffect, useState } from "react";
@@ -25,16 +26,16 @@ export default function Notes() {
   const [isNoteEditing, setIsNoteEditing] = useState(null);
 
   const handleAddNote = () => {
+    if (isNoteEditing) return;
     setIsEditing(true);
   };
 
   const handleSaveNote = () => {
     if (newNoteTitle.trim() && newNoteContent.trim()) {
-      const newNote = {
-        id: Date.now(), // Uso timestamp como ID temporal
+      const newNote = new Note({
         title: newNoteTitle,
         content: newNoteContent,
-      };
+      });
       setNotes([...notes, newNote]);
       setNewNoteTitle("");
       setNewNoteContent("");
@@ -43,6 +44,7 @@ export default function Notes() {
   };
 
   const handleEditNote = (id) => {
+    if (isEditing) return;
     const noteToEdit = notes.find((note) => note.id === id);
     if (noteToEdit) {
       setIsNoteEditing(noteToEdit);
@@ -53,18 +55,16 @@ export default function Notes() {
 
   const handleUpdateNote = () => {
     if (isNoteEditing) {
-      console.log("text", newNoteTitle, newNoteContent);
-
       const updatedNotes = notes.map((note) =>
         note.id === isNoteEditing.id
-          ? {
-              ...note,
-              title: newNoteTitle || note.title,
-              content: newNoteContent || note.content,
-            }
+          ? note.update({ title: newNoteTitle, content: newNoteContent })
           : note
       );
+
       setNotes(updatedNotes);
+      setNewNoteTitle("");
+      setNewNoteContent("");
+      setIsEditing(false);
       setIsNoteEditing(null);
     }
   };
@@ -96,7 +96,13 @@ export default function Notes() {
       <h1>Notes Page</h1>
       <NotesContainer onDoubleClick={handleCancelEdit}>
         <NotesHeader>Your Notes</NotesHeader>
-        <AddNoteButton onClick={handleAddNote}>Add Note</AddNoteButton>
+        {console.log(isEditing)}
+        <AddNoteButton
+          onClick={handleAddNote}
+          disabled={isEditing || isNoteEditing}
+        >
+          Add Note
+        </AddNoteButton>
 
         {isEditing && (
           <NoteCard>
@@ -139,7 +145,13 @@ export default function Notes() {
                   <NoteContent>{note.content}</NoteContent>
                 )}
                 <ButtonContainer>
-                  <EditNoteButton onClick={() => handleEditNote(note.id)}>
+                  <EditNoteButton
+                    onClick={() => handleEditNote(note.id)}
+                    disabled={
+                      isEditing ||
+                      (isNoteEditing && isNoteEditing.id !== note.id)
+                    }
+                  >
                     Edit
                   </EditNoteButton>
                 </ButtonContainer>
