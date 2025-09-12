@@ -16,6 +16,7 @@ export default function Nav() {
         <LinkContainer>
           <LinkStyled to="/">Dashboard</LinkStyled>
           <LinkStyled to="/box">Box</LinkStyled>
+          <LinkStyled to="/notes">Notes</LinkStyled>
         </LinkContainer>
       </NavStyled>
     </NavigationContainer>
