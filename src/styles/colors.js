@@ -1,16 +1,16 @@
 export const colors = {
   // Colores de fondo
-  background: '#ffffff',
-  cardBackground: '#f8f9fa',
-  buttonBackground: '#007bff',
-  buttonHover: '#0056b3',
+  background: "#ffffff",
+  cardBackground: "#e7e7e7ff",
+  buttonBackground: "#3f638aff",
+  buttonHover: "#0056b3",
 
   // Colores de texto
-  primaryText: '#333333',
-  secondaryText: '#666666',
-  buttonText: '#ffffff',
+  primaryText: "#333333",
+  secondaryText: "#242424ff",
+  buttonText: "#ffffff",
 
   // Colores de borde
-  border: '#dee2e6',
-  primary: '#007bff',
+  border: "#dee2e6",
+  primary: "#007bff",
 };

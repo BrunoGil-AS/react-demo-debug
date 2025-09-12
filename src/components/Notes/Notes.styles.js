@@ -15,6 +15,8 @@ export const NotesContainer = styled.div`
   width: 80%;
   margin: 20px auto;
   max-width: 800px;
+  background-color: rgba(169, 176, 182, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
 `;
 
 export const NoteCard = styled.div`
@@ -31,14 +33,22 @@ export const NoteCard = styled.div`
   }
 `;
 
-export const NoteTitle = styled.h2`
+export const NoteTitle = styled.h3`
   margin: 0 0 8px 0;
   color: ${colors.primaryText};
 `;
 
+export const NoteTitleContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 300px;
+`;
 export const NoteContent = styled.p`
   margin: 0;
   color: ${colors.secondaryText};
+  text-align: justify;
+  line-height: 1.5;
 `;
 
 export const AddNoteButton = styled.button`
@@ -52,6 +62,25 @@ export const AddNoteButton = styled.button`
   &:hover {
     background-color: ${colors.buttonHover};
   }
+`;
+
+export const EditNoteButton = styled.button`
+  background-color: ${colors.editButtonBackground};
+  color: ${colors.buttonText};
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: ${colors.editButtonHover};
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 `;
 
 export const NoteInput = styled.textarea`
@@ -91,4 +120,20 @@ export const NotesList = styled.ul`
 
 export const NoteItem = styled.li`
   margin-bottom: 16px;
+`;
+
+export const NoteItemContent = styled.div`
+  margin-bottom: 16px;
+  display: inline-block;
+  min-width: 300px;
+  max-width: 500px;
+  min-height: 100px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: ${colors.cardBackground};
 `;
