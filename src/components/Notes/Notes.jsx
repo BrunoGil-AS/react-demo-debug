@@ -16,7 +16,7 @@ import {
   DeleteNoteButton,
 } from "./Notes.styles";
 import { Note } from "./Note";
-
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import { useNotesContext } from "../../context/Notes/useNotesContext";
 import { useEffect, useState } from "react";
 export default function Notes() {
@@ -128,7 +128,7 @@ export default function Notes() {
                 <NoteTitleContainer>
                   <NoteTitle>Note: {note.title}</NoteTitle>
                 </NoteTitleContainer>
-                {isNoteEditing?.id === note.id ? (
+                {isNoteEditing.id === note.id ? (
                   <NoteContent>
                     <NoteTitleInput
                       value={newNoteTitle}

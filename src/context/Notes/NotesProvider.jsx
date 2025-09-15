@@ -1,6 +1,7 @@
 import { NotesContext } from "./useNotesContext";
 import { useState, useEffect } from "react";
 import { Note } from "../../components/Notes/Note";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 /**
  * NotesProvider component to manage notes state and provide it via context.
@@ -32,7 +33,7 @@ export const NotesProvider = ({ children }) => {
 
   return (
     <NotesContext.Provider value={{ notes, setNotes }}>
-      {children}
+      <ErrorBoundary>{children}</ErrorBoundary>
     </NotesContext.Provider>
   );
 };

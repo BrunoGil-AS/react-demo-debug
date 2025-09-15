@@ -13,6 +13,7 @@ import "./App.css";
 import { useEffect } from "react";
 import Notes from "./components/Notes";
 import { NotesProvider } from "./context/Notes/NotesProvider";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 /**
  * The main App component
@@ -27,7 +28,6 @@ function App() {
       <NotesProvider>
         <Router>
           <Nav />
-
           <main>
             <Routes>
               <Route path="/" element={<Dashboard />} />
