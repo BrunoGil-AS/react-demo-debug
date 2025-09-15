@@ -13,6 +13,7 @@ import {
   NoteItemContent,
   NoteTitleContainer,
   ButtonContainer,
+  DeleteNoteButton,
 } from "./Notes.styles";
 import { Note } from "./Note";
 
@@ -70,10 +71,6 @@ export default function Notes() {
   };
 
   useEffect(() => {
-    console.log("Notes updated:", notes);
-  }, [notes]);
-
-  useEffect(() => {
     console.log("isNoteEditing changed:", isNoteEditing);
   }, [isNoteEditing]);
 
@@ -91,12 +88,16 @@ export default function Notes() {
     }
   };
 
+  const handleDeleteNote = (id) => {
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+  };
+
   return (
     <>
       <h1>Notes Page</h1>
       <NotesContainer onDoubleClick={handleCancelEdit}>
         <NotesHeader>Your Notes</NotesHeader>
-        {console.log(isEditing)}
         <AddNoteButton
           onClick={handleAddNote}
           disabled={isEditing || isNoteEditing}
@@ -154,6 +155,9 @@ export default function Notes() {
                   >
                     Edit
                   </EditNoteButton>
+                  <DeleteNoteButton onClick={() => handleDeleteNote(note.id)}>
+                    Delete
+                  </DeleteNoteButton>
                 </ButtonContainer>
               </NoteItemContent>
             </NoteItem>

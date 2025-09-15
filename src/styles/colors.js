@@ -12,6 +12,9 @@ export const colors = {
   disabledText: "#aaaaaa",
   editButtonBackground: "#287fa7ff",
   disabledBackground: "#333333",
+  editButtonHover: "#005f8aff",
+  deleteButtonBackground: "#d9534fff",
+  deleteButtonHover: "#c9302cff",
 
   // Colores de borde
   border: "#dee2e6",

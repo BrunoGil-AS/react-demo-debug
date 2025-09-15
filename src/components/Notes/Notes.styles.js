@@ -91,6 +91,20 @@ export const EditNoteButton = styled.button`
   }
 `;
 
+export const DeleteNoteButton = styled.button`
+  background-color: ${colors.deleteButtonBackground};
+  color: ${colors.buttonText};
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${colors.deleteButtonHover};
+  }
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
