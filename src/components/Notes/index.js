@@ -2,6 +2,9 @@ import { Note } from "./Note";
 import Notes from "./Notes";
 import { withErrorBoundary } from "../ErrorBoundary/withErrorBoundary";
 
+/**
+ * Wrap the Notes component with an ErrorBoundary using the withErrorBoundary HOC.
+ */
 const NotesWithErrorBoundary = withErrorBoundary(Notes, "Notes");
 
 export default NotesWithErrorBoundary;

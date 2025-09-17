@@ -7,6 +7,15 @@ import {
   NoteTitleInput,
 } from "./Notes.styles";
 
+/**
+ * NewNoteCard component for creating a new note.
+ * @param {string} newNoteTitle - Title of the new note.
+ * @param {string} newNoteContent - Content of the new note.
+ * @param {function} setNewNoteTitle - Function to update the new note title.
+ * @param {function} setNewNoteContent - Function to update the new note content.
+ * @param {function} setIsNewNoteWriting - Function to update the new note writing state.
+ * @returns JSX element for the new note card.
+ */
 export function NewNoteCard({
   newNoteTitle,
   newNoteContent,

@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import "../../App.css";
 import { useCount } from "../../context/Counter/useCount";
 
+/**
+ * Box component that displays the current count and a button to increment it.
+ * @returns {JSX.Element} The Box component.
+ */
 export default function Box() {
   const { count, setCount } = useCount();
 

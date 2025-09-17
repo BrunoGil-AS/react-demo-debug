@@ -8,6 +8,11 @@ import {
   LinkContainer,
 } from "./Nav.styles";
 
+/**
+ * Navigation component for the application.
+ * Includes links to different routes, such as Dashboard, Box, and Notes.
+ * @returns JSX element for the navigation bar.
+ */
 export default function Nav() {
   return (
     <NavigationContainer>

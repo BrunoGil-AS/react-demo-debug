@@ -7,9 +7,13 @@ import {
   NotesHeader,
 } from "./Notes.styles";
 import { NewNoteCard } from "./NewNoteCard";
-import { Note } from "./Note";
 import { useEffect, useState } from "react";
 import { NoteList } from "./NoteList";
+
+/**
+ * Notes component to manage and display notes.
+ * @returns JSX element for the Notes component.
+ */
 export default function Notes() {
   const [isNewNoteWriting, setIsNewNoteWriting] = useState(false);
   const [newNoteTitle, setNewNoteTitle] = useState("");

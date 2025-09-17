@@ -15,6 +15,13 @@ import {
 import { useNotesContext } from "../../context/Notes/useNotesContext";
 import { useState } from "react";
 
+/**
+ * NoteList component to display and manage a list of notes.
+ * @param {object} isNoteEditing - The note currently being edited.
+ * @param {boolean} isNewNoteWriting - Indicates if a new note is being written.
+ * @param {function} setIsNoteEditing - Function to set the note being edited.
+ * @returns JSX element for the note list.
+ */
 export function NoteList({
   isNoteEditing,
   isNewNoteWriting,

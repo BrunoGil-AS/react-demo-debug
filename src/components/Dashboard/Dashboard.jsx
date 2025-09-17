@@ -1,6 +1,10 @@
 import "../../App.css";
 import { useCount } from "../../context/Counter/useCount";
 
+/**
+ * Dashboard component that displays the current count and a button to increment it.
+ * @returns {JSX.Element} The Dashboard component
+ */
 export default function Dashboard() {
   const { count, setCount } = useCount();
 
