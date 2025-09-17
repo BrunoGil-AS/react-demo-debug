@@ -1,73 +1,24 @@
 import {
   NotesContainer,
   NoteCard,
-  NoteTitle,
-  NoteContent,
   AddNoteButton,
   NoteInput,
   NoteTitleInput,
   NotesHeader,
-  NotesList,
-  NoteItem,
-  EditNoteButton,
-  NoteItemContent,
-  NoteTitleContainer,
-  ButtonContainer,
-  DeleteNoteButton,
 } from "./Notes.styles";
+import { NewNoteCard } from "./NewNoteCard";
 import { Note } from "./Note";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import { useNotesContext } from "../../context/Notes/useNotesContext";
 import { useEffect, useState } from "react";
+import { NoteList } from "./NoteList";
 export default function Notes() {
-  const { notes, setNotes } = useNotesContext();
-  const [isEditing, setIsEditing] = useState(false);
+  const [isNewNoteWriting, setIsNewNoteWriting] = useState(false);
   const [newNoteTitle, setNewNoteTitle] = useState("");
   const [newNoteContent, setNewNoteContent] = useState("");
   const [isNoteEditing, setIsNoteEditing] = useState(null);
 
   const handleAddNote = () => {
     if (isNoteEditing) return;
-    setIsEditing(true);
-  };
-
-  const handleSaveNote = () => {
-    if (newNoteTitle.trim() && newNoteContent.trim()) {
-      const newNote = new Note({
-        title: newNoteTitle,
-        content: newNoteContent,
-      });
-      setNotes([...notes, newNote]);
-      setNewNoteTitle("");
-      setNewNoteContent("");
-      setIsEditing(false);
-    }
-  };
-
-  const handleEditNote = (id) => {
-    if (isEditing) return;
-    const noteToEdit = notes.find((note) => note.id === id);
-    if (noteToEdit) {
-      setIsNoteEditing(noteToEdit);
-      setNewNoteTitle(noteToEdit.title);
-      setNewNoteContent(noteToEdit.content);
-    }
-  };
-
-  const handleUpdateNote = () => {
-    if (isNoteEditing) {
-      const updatedNotes = notes.map((note) =>
-        note.id === isNoteEditing.id
-          ? note.update({ title: newNoteTitle, content: newNoteContent })
-          : note
-      );
-
-      setNotes(updatedNotes);
-      setNewNoteTitle("");
-      setNewNoteContent("");
-      setIsEditing(false);
-      setIsNoteEditing(null);
-    }
+    setIsNewNoteWriting(true);
   };
 
   useEffect(() => {
@@ -78,7 +29,7 @@ export default function Notes() {
     if (isNoteEditing) {
       setIsNoteEditing(null);
     }
-    setIsEditing(false);
+    setIsNewNoteWriting(false);
     setNewNoteTitle("");
     setNewNoteContent("");
   };
@@ -88,11 +39,6 @@ export default function Notes() {
     }
   };
 
-  const handleDeleteNote = (id) => {
-    const updatedNotes = notes.filter((note) => note.id !== id);
-    setNotes(updatedNotes);
-  };
-
   return (
     <>
       <h1>Notes Page</h1>
@@ -100,69 +46,26 @@ export default function Notes() {
         <NotesHeader>Your Notes</NotesHeader>
         <AddNoteButton
           onClick={handleAddNote}
-          disabled={isEditing || isNoteEditing}
+          disabled={isNewNoteWriting || isNoteEditing}
         >
           Add Note
         </AddNoteButton>
 
-        {isEditing && (
-          <NoteCard>
-            <NoteTitleInput
-              value={newNoteTitle}
-              onChange={(e) => setNewNoteTitle(e.target.value)}
-              placeholder="Note Title"
-            />
-            <NoteInput
-              value={newNoteContent}
-              onChange={(e) => setNewNoteContent(e.target.value)}
-              placeholder="Write your note here..."
-            />
-            <AddNoteButton onClick={handleSaveNote}>Save Note</AddNoteButton>
-          </NoteCard>
+        {isNewNoteWriting && (
+          <NewNoteCard
+            newNoteTitle={newNoteTitle}
+            newNoteContent={newNoteContent}
+            setNewNoteTitle={setNewNoteTitle}
+            setNewNoteContent={setNewNoteContent}
+            setIsNewNoteWriting={setIsNewNoteWriting}
+          />
         )}
 
-        <NotesList>
-          {notes.map((note) => (
-            <NoteItem key={note.id}>
-              <NoteItemContent>
-                <NoteTitleContainer>
-                  <NoteTitle>Note: {note.title}</NoteTitle>
-                </NoteTitleContainer>
-                {isNoteEditing.id === note.id ? (
-                  <NoteContent>
-                    <NoteTitleInput
-                      value={newNoteTitle}
-                      onChange={(e) => setNewNoteTitle(e.target.value)}
-                    />
-                    <NoteInput
-                      value={newNoteContent}
-                      onChange={(e) => setNewNoteContent(e.target.value)}
-                    />
-                    <AddNoteButton onClick={handleUpdateNote}>
-                      Update Note
-                    </AddNoteButton>
-                  </NoteContent>
-                ) : (
-                  <NoteContent>{note.content}</NoteContent>
-                )}
-                <ButtonContainer>
-                  <EditNoteButton
-                    onClick={() => handleEditNote(note.id)}
-                    disabled={
-                      isEditing ||
-                      (isNoteEditing && isNoteEditing.id !== note.id)
-                    }
-                  >
-                    Edit
-                  </EditNoteButton>
-                  <DeleteNoteButton onClick={() => handleDeleteNote(note.id)}>
-                    Delete
-                  </DeleteNoteButton>
-                </ButtonContainer>
-              </NoteItemContent>
-            </NoteItem>
-          ))}
-        </NotesList>
+        <NoteList
+          isNoteEditing={isNoteEditing}
+          isNewNoteWriting={isNewNoteWriting}
+          setIsNoteEditing={setIsNoteEditing}
+        />
       </NotesContainer>
     </>
   );
