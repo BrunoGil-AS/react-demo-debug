@@ -17,11 +17,12 @@ flowchart TD
     %% Runtime Browser Layer
     subgraph "Runtime Browser Layer"
         MAIN["src/main.jsx<br/>Entry Point"]:::runtime
-        INDEXCSS["src/index.css<br/>Global Styles"]:::runtime
         APP["src/App.jsx<br/>Root Component"]:::runtime
-        APPCSS["src/App.css<br/>Root Styles"]:::runtime
-        COLORS["src/styles/colors.js<br/>Color Constants"]:::runtime
-
+        subgraph "Global App Styles"
+            INDEXCSS["src/index.css<br/>Global Styles"]:::runtime
+            APPCSS["src/App.css<br/>Root Styles"]:::runtime
+            COLORS["src/styles/colors.js<br/>Color Constants"]:::runtime
+        end
         subgraph "Context Providers & Hooks"
             COUNTPROV["CountProvider<br/>Context Provider"]:::runtime
             COUNTHOOK["useCount<br/>Custom Hook"]:::runtime
@@ -87,8 +88,6 @@ flowchart TD
 
     %% Styles
     classDef runtime fill:#e2f7e1,stroke:#2ca02c,color:#000
-
-
 ```
 
 The project is structured as follows:
