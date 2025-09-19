@@ -16,29 +16,29 @@ This project is a demonstration of basic and elementary features and concepts of
 flowchart TD
     %% Runtime Browser Layer
     subgraph "Runtime Browser Layer"
-        MAIN["src/main.jsx\nEntry Point"]:::runtime
-        INDEXCSS["src/index.css\nGlobal Styles"]:::runtime
-        APP["src/App.jsx\nRoot Component"]:::runtime
-        APPCSS["src/App.css\nRoot Styles"]:::runtime
-        COLORS["src/styles/colors.js\nColor Constants"]:::runtime
+        MAIN["src/main.jsx<br/>Entry Point"]:::runtime
+        INDEXCSS["src/index.css<br/>Global Styles"]:::runtime
+        APP["src/App.jsx<br/>Root Component"]:::runtime
+        APPCSS["src/App.css<br/>Root Styles"]:::runtime
+        COLORS["src/styles/colors.js<br/>Color Constants"]:::runtime
 
         subgraph "Context Providers & Hooks"
-            COUNTPROV["CountProvider\n(src/context/Counter/CountProvider.jsx)"]:::runtime
-            COUNTHOOK["useCount\n(src/context/Counter/useCount.js)"]:::runtime
-            NOTESPROV["NotesProvider\n(src/context/Notes/NotesProvider.jsx)"]:::runtime
-            NOTESHOOK["useNotesContext\n(src/context/Notes/useNotesContext.js)"]:::runtime
+            COUNTPROV["CountProvider<br/>Context Provider"]:::runtime
+            COUNTHOOK["useCount<br/>Custom Hook"]:::runtime
+            NOTESPROV["NotesProvider<br/>Context Provider"]:::runtime
+            NOTESHOOK["useNotesContext<br/>Custom Hook"]:::runtime
         end
 
         subgraph "UI Components"
-            NAV["Nav\n(src/components/Nav/Nav.jsx)"]:::runtime
-            DASH["Dashboard\n(src/components/Dashboard/Dashboard.jsx)"]:::runtime
-            NOTES["NotesContainer\n(src/components/Notes/Notes.jsx)"]:::runtime
-            NEWNOTE["NewNoteCard\n(src/components/Notes/NewNoteCard.jsx)"]:::runtime
-            NOTELIST["NoteList\n(src/components/Notes/NoteList.jsx)"]:::runtime
-            NOTE["Note\n(src/components/Notes/Note.js)"]:::runtime
-            BOX["Box\n(src/components/Box/Box.jsx)"]:::runtime
-            ERRWRAP["withErrorBoundary\n(src/components/ErrorBoundary/withErrorBoundary.jsx)"]:::runtime
-            ERRCOMP["ErrorBoundary\n(src/components/ErrorBoundary/ErrorBoundary.jsx)"]:::runtime
+            NAV["Nav<br/>Component"]:::runtime
+            DASH["Dashboard<br/>Component"]:::runtime
+            NOTES["NotesContainer<br/>Component"]:::runtime
+            NEWNOTE["NewNoteCard<br/>Component"]:::runtime
+            NOTELIST["NoteList<br/>Component"]:::runtime
+            NOTE["Note<br/>Component"]:::runtime
+            BOX["Box<br/>Component"]:::runtime
+            ERRWRAP["withErrorBoundary<br/>HOC"]:::runtime
+            ERRCOMP["ErrorBoundary<br/>Component"]:::runtime
         end
     end
 
@@ -65,7 +65,7 @@ flowchart TD
     NOTES --> NOTELIST
     NOTELIST --> NOTE
 
-    %% Click Events
+    %% Click Events (still point to full paths for reference)
     click MAIN "https://github.com/brunogil-as/react-demo-debug/blob/master/src/main.jsx"
     click INDEXCSS "https://github.com/brunogil-as/react-demo-debug/blob/master/src/index.css"
     click APP "https://github.com/brunogil-as/react-demo-debug/blob/master/src/App.jsx"
@@ -87,6 +87,7 @@ flowchart TD
 
     %% Styles
     classDef runtime fill:#e2f7e1,stroke:#2ca02c,color:#000
+
 
 ```
 
